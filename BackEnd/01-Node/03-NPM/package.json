@@ -1,0 +1,15 @@
+{
+  "name": "03-npm",
+  "version": "1.0.0",
+  "description": "Practice",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saba Azeem",
+  "license": "ISC",
+  "dependencies": {
+    "superheroes": "^3.0.0"
+  }
+}
