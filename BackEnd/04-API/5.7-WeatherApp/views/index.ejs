@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Weather_App</title>
+</head>
+<body>
+    <%if(!locals.city_country)
+    {%>
+        <div class="container">
+            <form action="submit" method="post">
+            <input type="text" placeholder="Enter City Name" name="city_name" required>
+            <button>Get Temperature</button>
+        </form>    
+        </div>
+   <% }else{%>
+        <div class="container">
+            <form action="submit" method="post">
+            <input type="text" placeholder="Enter City Name" name="city_name">
+            <button>Get Temperature</button>
+            </form>
+            <div class="content">
+                <h1><%=city_country%></h1>
+                <h2><%=temp%>°C</h2>
+                <h3><%=weather_description%></h3>
+            </div>
+        </div>
+   <% } %>
+    
+</body>
+</html>

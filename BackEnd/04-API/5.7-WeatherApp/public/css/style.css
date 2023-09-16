@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background:linear-gradient(purple,white);
+}
+form input,form button{
+    width: 60vw;
+    padding: 20px;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+    font-size: 1.3rem;
+    font-weight: 700;
+    background-color: whitesmoke;
+}
+form button{
+    width: auto;
+    margin-left: 1.3rem;
+    cursor: pointer;
+}
+.content{
+    background-color: whitesmoke;
+    width: 76vw;
+    margin-top: 2rem;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+}
+.content *{
+    padding: 20px;
+}
+.content h1{
+    font-size: 4rem;
+}
+.content h2{
+    font-size: 3rem;
+}
+.content h3{
+    font-size: 2rem;
+}
+
+    /* define the animation */
+@keyframes slide-in {
+    from{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.container{
+    animation: slide-in 1s ease-in-out;
+}
