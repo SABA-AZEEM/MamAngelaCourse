@@ -1,0 +1,35 @@
+                       // Starting Instructions//
+01:first start server by write 'mongod'
+02:Then in new tab write 'mongosh' for start shell to interact with  mongodb  database on our local system using the command line.
+
+// 'help' command is used for show basics commands.
+//'show dbs' command show all the dbs
+//'use databaseName' if db exist then we can now use it with the synonym of 'db', and if it's not exist then it's created and we use it.
+//if new database is created then it's not show in the list of 'show dbs' b/c it has'nt any content, so when i add content in it, then it show in 'show dbs' list.
+//for drop db, first we enter in that db by 'use dbName', then write 'db.dropDatabase()'
+//if you want to show in which db are you currently in, then write 'db'
+//MongoDB have 2 things: 
+    1:Collection(group of documents,just like table in sql)
+    2:Document(It's just a obj, just like a record in sql)
+
+                                //CRUD operation//
+                                //CREATE//
+//there are 2 methods for Create:
+    1:db.collectionName.insertOne({obj});
+    2:db.collectionName.insertMany([{obj},{obj},...]);
+    Note:if collection isn't exist,then by writing this command it auto. created.
+    //and 'show collections' show the collections in my current db.
+
+                                //READ//
+//There are 2 methods for read:
+    1:db.collectionName.find() //it shows all the documents in that collection.
+    //db.angelaCollection.find({price:{$gt:3.5}}) //find document in which that price property is greater than 3.5
+    Note:See w3school for documentation,there it's better describe
+
+                            //UPDATE//
+//update('konsa obj update krna hai','us mai kia update krna hai');
+//updateONe method jo b pehla obj mil jae jo is criteria ko satisfy kr rha ho usko
+update kr deta.
+
+                        //exit//
+for exit press 'ctrl+c'
