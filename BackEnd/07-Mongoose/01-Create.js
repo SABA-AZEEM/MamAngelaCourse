@@ -18,10 +18,10 @@ const personSchema=new mongoose.Schema({
                     //Create Model
 const Person=mongoose.model("Person",personSchema);
                     //Create single document
-const person1=new Person({
-    name:"Saba Azeem",
-    age:24,
-});
+// const person1=new Person({
+//     name:"Saba Azeem",
+//     age:24,
+// });
                    //save document(this is write only for single document)
 //person1.save();
                     //Create Many document
@@ -35,15 +35,32 @@ const person1=new Person({
 //     console.log("Error during inserting documents:",error);
 // });
                     //Read data from document
-Person.find()
-.then((people)=>{
-    //console.log("All documents is the collection are:",people);
-    people.forEach((person)=>{
-        console.log(person.name);
-    });
-    //if i don't want to close the connection manually(ctrl+c), then in the last action i close the database connecton
-    mongoose.connection.close();
-}).catch((error)=>{
-    console.log("Error during fetching collection is:",error);
-});
+// Person.find()
+// .then((people)=>{
+//     //console.log("All documents is the collection are:",people);
+//     people.forEach((person)=>{
+//         console.log(person.name);
+//     });
+//     //if i don't want to close the connection manually(ctrl+c), then in the last action i close the database connecton
+//     mongoose.connection.close();
+// }).catch((error)=>{
+//     console.log("Error during fetching collection is:",error);
+// });
+                        //Update data from document
+// async function updatePerson(){
+//     try{
+//         await Person.updateOne({_id:'65082b092aeea6322aac1523'},{name:"Zainab Azeem"});
+//     }catch(error){
+//         console.log(error);
+//     }
+// }
+// updatePerson();
+                        //Delete Operation
+//Del one
+// const result=await Person.deleteOne({_id:'65082b092aeea6322aac1523'});
 
+//Del Many
+// const result=await Person.deleteMany({name:'Ali',name: 'Abdul Kareem'});
+
+//Find by id and delete
+const result=await Person.findByIdAndDelete('65082bb84bc0e03e81f1f1e2');
