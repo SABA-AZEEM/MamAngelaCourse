@@ -8,11 +8,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/Student');
 const todayListSchema=new mongoose.Schema({name:String});
 //Create model
 const TodayTask=mongoose.model("TodayTask",todayListSchema);
+//model for work list
+const WorkTask=mongoose.model("WorkTask",todayListSchema);
 
 const app=express();
 const PORT=3000;
-// const todayArr=[];
-const workArr=[];
+
 //date
 const date=new Date();
 const currentYear=date.getFullYear();
@@ -40,40 +41,38 @@ app.get('/',(req,res)=>{
     })
 });
 app.get('/work',(req,res)=>{
-    res.render('toDayList.ejs',{
-        tasks:workArr,
-        heading:'Work List',
-        year:currentYear,
-    });
+    WorkTask.find()
+    .then((workArr)=>{
+        res.render('toDayList.ejs',{
+            tasks:workArr,
+            heading:'Work List',
+            year:currentYear,
+        });
+    })
 });
 //route for submit form
 app.post('/submitToday',(req,res)=>{
     let task=req.body.task;
-    // todayArr.push(task);
-    // console.log(todayArr);
-    //Write Operation
     const newTask=new TodayTask({name:task});
-    newTask.save();
-    TodayTask.find()
-    .then((tasksArr)=>{
-        res.render('index.ejs',{
-            tasks:tasksArr,
-            heading:current,
-            year:currentYear,
-        });
-    })
+    newTask.save()
+    .then(()=>res.redirect('/'))
+    .catch((error)=>console.log(error));
 })
 app.post('/submitWork',(req,res)=>{
     let task=req.body.task;
-    workArr.push(task);
-    console.log(workArr);
-    res.render('toDayList.ejs',{
-        tasks:workArr,
-        heading:'Work List',
-        year:currentYear,
-    });
-})
-
+    const workTask=new WorkTask({name:task});
+    workTask.save()
+    .then(()=>res.redirect('/work'))
+    .catch((error)=>console.log(error));
+});
+//api request
+app.get('/delApi',async(req,res)=>{
+    let delItem=req.query.item;
+    console.log(delItem);
+    const result=await TodayTask.deleteOne({_id:delItem});
+    const result2=await WorkTask.deleteOne({_id:delItem});
+    res.redirect('/');
+});
 //listen the port
 app.listen(process.env.PORT || PORT,()=>{
     console.log(`Server is running on PORT: ${PORT}`);

@@ -7,18 +7,18 @@
         
             <% tasks.forEach((task)=>{ %>
                     <div>
-                        <input type="checkbox" class="checkbox">
-                        <input type="text" value="<%=task%>" readonly class="read" >
+                        <input type="checkbox" class="checkbox" value="<%=task._id%>">
+                        <input type="text" value="<%=task.name%>" readonly class="read" >
                     </div>
             <%});%>
             <form action="submitWork" method="post" class="add-item">
-                <input type="text" value="" name="task" placeholder="New Item">
+                <input type="text" value="" name="task" placeholder="New Item" required>
                 <button>+</button>
             </form>
         </div>
     <%} else{ %>
-        <form action="submitWork" method="post" class="add-item">
-                <input type="text" value="" name="task" placeholder="New Item">
+        <form action="submitWork" method="post" class="add-item" >
+                <input type="text" value="" name="task" placeholder="New Item" required>
                 <button>+</button>
             </form>
     <%}%>
